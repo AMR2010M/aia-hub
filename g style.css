@@ -6,6 +6,7 @@ body{
     margin: 0px;
     padding=0px;
 }
+
 div.m {
   height: 702px;
     background-image: url(background2.jpg.jpg);
@@ -131,7 +132,7 @@ div.maing{
 div.maing button{
      padding:12px;
     border-radius: 8px; 
-    background-color:aqua;
+    background-color:#4e12f3cc;
     color:white;
     border: none;
     
@@ -349,10 +350,7 @@ div.test h1{
     text-align: center;
     color: orange;
 }
-div.test{
-    background-color: aquamarine;
-    margin-top: -34px;
-}
+
 div.postscontent h4.last,p.last{
    
     text-align: center;
