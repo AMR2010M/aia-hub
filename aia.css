@@ -1,9 +1,4 @@
-@media only screen and (max-width: 768px) {
- .template{display: flex; flex-direction: column-reverse;
-	   width:70%;
-	   height:67%;
-	   
-}
+
 
 html{margin: 0px;}
 .main{ margin: -1px;width: 100%}
