@@ -1,3 +1,10 @@
+@media only screen and (max-width: 768px) {
+ .template{display: flex; flex-direction: column-reverse;
+	   width:70%;
+	   height:67%;
+	   
+}
+
 html{margin: 0px;}
 .main{ margin: -1px;width: 100%}
 .navbar{background-color:rgba(23,23,23, 0.8);;; justify-content: space-between; height: 86px;}
