@@ -1,9 +1,11 @@
 body{}
 .main{height: 500%;width: 100%;background-color: white; margin: auto;justify-content: center; padding: 0px; margin: 0px; ;}
-.header{ font-family: cursive;margin-left:30%;}
+.header{ font-family: cursive;margin-left:30%;text-align: center; /* Center the text */
+    margin: 0 auto; /* Center the element horizontally */}
 .head1{color: rgb(119, 14, 240);font-size: 400%;margin-top: 10%;}
-.head2{color: rgb(46, 15, 73);font-size: 240%; ;}
+.head2{color: rgb(46, 15, 73);font-size: 240%; ; }
 .mainbtn {
+    margin: auto;margin-bottom: 20%;margin-top: 10% ;
     background: linear-gradient(to right,#07b0e8, rgb(119, 14, 240)); /* Gradient colors */
     color: white; /* Text color */
     font-weight: bold; /* Bold text */
@@ -496,7 +498,19 @@ body{}
     font-size: 16px;
     color: #333;
 }
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
 
+body.dark-mode .navbar {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode a {
+    color: #ffffff;
+}
 .form-group input,
 .form-group select {
     padding: 5px;
