@@ -1,8 +1,7 @@
-
-
 html{margin: 0px;}
+
 .main{ margin: -1px;width: 100%}
-.navbar{background-color:rgba(23,23,23, 0.8);;; justify-content: space-between; height: 86px;}
+.navbar{background-color:rgba(23,23,23, 0.8);;; justify-content: space-between; height: 86px; width: 110%}
 .navbar a  { color:white; margin-left: 50px; margin-bottom: 10px ;text-align: center; text-justify: auto; font-family: monospace;font-size: 24px;}
 .namex{margin-left: 20px}
 .table1{margin-left: -40px}
@@ -29,7 +28,7 @@ input{ border-color: dodgerblue;}
 .about{ ;animation-name: a32; animation-duration: 13s}
 
 .input{}
-.main{background-image: url(v1016-b-09.jpg); height: 1233px;width: 100%; background-repeat: no-repeat; background-size: cover; background-position: center; }
+.main{background-color: #7BD5F5; height: 1233px;width: 100%; background-repeat: no-repeat; background-size: cover; background-position: center; }
 .navbar img{margin-left: 90px; }
 table{ padding: 100px; justify-content: space-between; align-items: center; margin: auto; }
 .template{background-color: rgba(2000,2000,2000,0.8); border-radius: 10px;width: 230px;height: 230; animation-name: fadeIn; animation-duration: 7s; margin-left: 2px;margin-right: 2px; margin-bottom: 10px; font-size: 20px; }
@@ -47,8 +46,9 @@ input{animation-name:fadeIn; animation-duration: 1s; margin-left:0px;  }
 .d h1{margin-left: 50px; color: goldenrod;}
 .d button{padding: 10px;border-radius: 6px; background-color: transparent; margin-left: 40px}
 
-
-.u{margin-left: 10px;  width:100px;height:100px; border-radius: 100px;  background-position: center; background-size: cover;}
+table1{justify-content: space-between; margin: auto; align-items: center}
+.u{margin-left: -8px;  width:150px;height:150px; border-radius: 150px;  background-position: center; background-size: cover;}
+table2 td{margin-left: 66px}
 .u1{background-image: url(space.jpg);}
 .u3{background-image: url(IMG-20240722-WA0036.jpg);}
 .u2{background-image: url('images%20(6).jpeg');}

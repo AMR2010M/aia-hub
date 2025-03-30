@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html" class="logo">AIA Hub</a>
+    </header>
+    <main>
+        <h1>Settings</h1>
+        <form class="settings-form">
+            <div class="form-group">
+                <label for="darkModeToggle">Enable Dark Mode:</label>
+                <input type="checkbox" id="darkModeToggle">
+            </div>
+            <div class="form-group">
+                <label for="notificationsToggle">Enable Notifications:</label>
+                <input type="checkbox" id="notificationsToggle">
+            </div>
+            <div class="form-group">
+                <label for="languageSelect">Preferred Language:</label>
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                </select>
+            </div>
+            <button type="button" onclick="saveSettings()">Save Settings</button>
+        </form>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </main>
+    <script src="settings.js"></script>
+</body>
+</html>
