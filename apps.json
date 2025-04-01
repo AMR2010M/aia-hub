@@ -1,38 +1,14 @@
-const appsJsonUrl = `${GITHUB_API_URL}apps.json`;
-
-// Fetch the existing JSON file
-const existingAppsResponse = await fetch(appsJsonUrl, {
-  headers: {
-    'Authorization': `Bearer ${GITHUB_TOKEN}`
-  }
-});
-
-let apps = [];
-if (existingAppsResponse.ok) {
-  const existingAppsData = await existingAppsResponse.json();
-  const existingAppsContent = atob(existingAppsData.content); // Decode Base64 content
-  apps = JSON.parse(existingAppsContent);
-}
-
-// Add the new app details
-apps.push({
-  name: appName,
-  description: appDescription,
-  image: appImageURL,
-  file: `https://github.com/AMR2010M/aia-hub/blob/main/${appFile.name}`
-});
-
-// Update the JSON file in the repository
-const updatedAppsContent = btoa(JSON.stringify(apps, null, 2)); // Encode to Base64
-await fetch(appsJsonUrl, {
-  method: 'PUT',
-  headers: {
-    'Authorization': `Bearer ${GITHUB_TOKEN}`,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    message: 'Update apps.json',
-    content: updatedAppsContent,
-    sha: existingAppsData.sha // Required to update the file
-  })
-});
+[
+    {
+      "name": "Tasbeeh App",
+      "description": "A creative app for productivity.",
+      "image": "https://example.com/tasbeeh.png",
+      "file": "https://github.com/AMR2010M/aia-hub/blob/main/tasbeeh.aia"
+    },
+    {
+      "name": "Police Game",
+      "description": "An innovative app for design.",
+      "image": "https://example.com/police.png",
+      "file": "https://github.com/AMR2010M/aia-hub/blob/main/police.aia"
+    }
+  ]
