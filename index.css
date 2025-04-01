@@ -268,7 +268,7 @@ body{}
 .testimonials-carousel {
     display: flex;
     gap: 30px;
-    animation: scrollTestimonials 30s linear infinite;
+    animation: scrollTestimonials 8s linear infinite;
 }
 
 .testimonial-card {
