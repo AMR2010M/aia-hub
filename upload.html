@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload to GitHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+    .table-container {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col items-center justify-center p-4">
+  <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Upload to GitHub</h1>
+  <div class="w-full max-w-lg bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+    <form id="uploadForm" class="flex flex-col gap-4">
+      <input type="text" id="appName" placeholder="App Name" class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <textarea id="appDescription" placeholder="App Description" class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+      <input type="file" id="appFile" class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <input type="text" id="appImageURL" placeholder="App Image URL" class="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow">Upload</button>
+    </form>
+  </div>
+
+  <div class="w-full max-w-4xl bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mt-6">
+    <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Apps Table</h2>
+    <div class="table-container">
+      <table class="w-full border-collapse border border-gray-300 dark:border-gray-600">
+        <thead>
+          <tr class="bg-gray-200 dark:bg-gray-700">
+            <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Image</th>
+            <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Name</th>
+            <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">Description</th>
+            <th class="border border-gray-300 dark:border-gray-600 px-4 py-2">AIA File</th>
+          </tr>
+        </thead>
+        <tbody id="appsTableBody">
+          <!-- New rows will be added here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const uploadForm = document.getElementById('uploadForm');
+    const appsTableBody = document.getElementById('appsTableBody');
+
+    // GitHub API Configuration
+    const GITHUB_API_URL = 'https://api.github.com/repos/AMR2010M/aia-hub/contents/';
+    const GITHUB_TOKEN = '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'; // Replace with your GitHub token
+
+    // Handle form submission
+    uploadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const appName = document.getElementById('appName').value.trim();
+      const appDescription = document.getElementById('appDescription').value.trim();
+      const appFile = document.getElementById('appFile').files[0];
+      const appImageURL = document.getElementById('appImageURL').value.trim();
+
+      if (!appName || !appDescription || !appFile || !appImageURL) {
+        alert('Please fill out all fields.');
+        return;
+      }
+
+      // Read the file as Base64
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const base64File = reader.result.split(',')[1]; // Remove the Base64 prefix
+
+        // Upload the file to GitHub
+        const response = await fetch(`${GITHUB_API_URL}${appFile.name}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${GITHUB_TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `Add ${appFile.name}`,
+            content: base64File
+          })
+        });
+
+        if (response.ok) {
+          // Add a new row to the table
+          const newRow = document.createElement('tr');
+          newRow.innerHTML = `
+            <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">
+              <img src="${appImageURL}" alt="${appName}" class="w-16 h-16 object-cover rounded">
+            </td>
+            <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">${appName}</td>
+            <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">${appDescription}</td>
+            <td class="border border-gray-300 dark:border-gray-600 px-4 py-2">
+              <a href="https://github.com/AMR2010M/aia-hub/blob/main/${appFile.name}" target="_blank" class="text-blue-500 underline">Download</a>
+            </td>
+          `;
+          appsTableBody.appendChild(newRow);
+
+          // Clear the form
+          uploadForm.reset();
+          alert('File uploaded successfully!');
+        } else {
+          alert('Failed to upload the file. Please check your GitHub token and repository permissions.');
+        }
+      };
+
+      reader.readAsDataURL(appFile);
+    });
+  </script>
+</body>
+</html>

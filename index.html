@@ -18,7 +18,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="settings.html">Settings</a></li>
                         <li><a href="#updates">Updates</a></li>
-                        <li><a href="#darkmode">Dark Mode</a></li>
+                        <li><a href="upload.html">add your app</a></li>
                         <li><a href="about.html">About</a></li>
                     </ul>
                 </li>
@@ -26,6 +26,7 @@
             </ul>
         </nav>
     </header>
+    
     
 <div class="main" style='width=100%; background-color: white'>
 <h1 class="header head1">aia hub </h1>
@@ -221,10 +222,50 @@
     </div>
     <div class="footer-bottom">
         <p>&copy; 2025 AIA Hub. All rights reserved.</p>
-        <p> developed by eng<a href="https://community.kodular.io/u/amr_kilany/summary"><button style=" background-color: rgb(208, 229, 245); padding: 5px; border-radius: 4px;;"> amr kilany</button></a></p>
+        <p style="color: blueviolet;"> developed by eng<a href="https://community.kodular.io/u/amr_kilany/summary"><button style=" background-color: rgb(208, 229, 245); padding: 5px; border-radius: 4px;;"> amr kilany</button></a></p>
     </div>
 </footer>
-<script src="script.js"></script>  
+<script><script>
+    const appsJsonUrl = 'https://raw.githubusercontent.com/AMR2010M/aia-hub/main/apps.json'; // URL to your apps.json file
+    const appGridContainer = document.querySelector('.app-grid-container'); // Select the container to populate
+  
+    async function loadApps() {
+      try {
+        const response = await fetch(appsJsonUrl);
+        if (!response.ok) {
+          throw new Error('Failed to fetch apps.json');
+        }
+  
+        const apps = await response.json();
+  
+        // Clear the existing content in the app grid container
+        appGridContainer.innerHTML = `
+          <h2 class="grid-header" id="apps">developer: amrkhaled</h2>
+          <div class="app-grid"></div>
+        `;
+  
+        const appGrid = appGridContainer.querySelector('.app-grid');
+  
+        // Populate the app grid with app details
+        apps.forEach(app => {
+          const appCard = document.createElement('div');
+          appCard.className = 'app-card';
+          appCard.innerHTML = `
+            <img src="${app.image}" alt="${app.name}" class="app-image">
+            <h3 class="app-title">${app.name}</h3>
+            <p class="app-description">${app.description}</p>
+            <a href="${app.file}" download class="download-btn">Download</a>
+          `;
+          appGrid.appendChild(appCard);
+        });
+      } catch (error) {
+        console.error('Error loading apps:', error);
+      }
+    }
+  
+    // Call the function to load apps when the page loads
+    loadApps();
+  </script></script>  
 </body>
 
 
