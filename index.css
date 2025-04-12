@@ -532,3 +532,49 @@ button {
 button:hover {
     background-color: rgb(66, 133, 244);
 }
+.growing{
+    display: flex;
+    flex-direction:row ;
+    justify-content: center;
+}
+.growing-text{
+    font-size: 30px;
+    color: rgba(66, 30, 13, 0.853);
+    margin-left: 10%;
+    margin-top: 10%;
+    font-weight: bold;
+}
+
+.growing-btn{
+    margin: auto;margin-bottom: 20%;margin-top: 10% ;
+    
+    background: linear-gradient(to right,#00d9ff, rgb(41, 220, 95)); /* Gradient colors */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold text */
+    border-radius: 15px; /* Rounded corners */
+  
+    width: auto; /* Adjust width dynamically */
+    height: auto; /* Adjust height dynamically */
+    font-size: 35px; /* Font size */
+    margin-left:0; /* Center alignment */
+    border: none; /* Remove default border */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: all 0.2s ease; /* Smooth hover effect */
+}
+.growing-header {
+    font-size: 40px; /* Initial font size */
+    font-weight: bold;
+    color: rgb(99, 255, 159); /* Header color */
+    text-align: center; /* Center the text */
+    margin: 20px auto; /* Center alignment with margin */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for growth */
+}
+
+.growing-header:hover {
+    
+    color: rgb(53, 255, 31); /* Change color on hover */
+}
+@media (max-width: 768px) {
+   .growing{
+    flex-direction:column ;}
